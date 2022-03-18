@@ -1,6 +1,0 @@
-/home/al/CLionProjects/HW1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/al/CLionProjects/HW1/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/al/CLionProjects/HW1/cmake-build-debug/CMakeFiles/array_tools.dir
-/home/al/CLionProjects/HW1/cmake-build-debug/CMakeFiles/HW1.dir
-/home/al/CLionProjects/HW1/cmake-build-debug/CMakeFiles/song_tools.dir
-/home/al/CLionProjects/HW1/cmake-build-debug/CMakeFiles/run_tests.dir
