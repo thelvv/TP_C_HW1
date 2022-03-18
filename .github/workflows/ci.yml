@@ -34,9 +34,6 @@ jobs:
       - name: scan-build  clang-tidy
         run: mkdir build && cd build && scan-build cmake .. && scan-build make
         
-      - name: linters
-        run: ./linters/run.sh
-        
       - name: cppcheck
         run: cppcheck src tests  --enable=all --error-exitcode=1 -I project/include --suppress=missingIncludeSystem
         
