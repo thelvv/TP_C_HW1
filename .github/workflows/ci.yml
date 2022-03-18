@@ -44,10 +44,10 @@ jobs:
         run: cd tests && cmake .. && make  && ./run_tests && cmake -Dparallel=ON .. && make && ./run_tests && cd .. && lcov -t "hw1" -o hw1.info -c -d . && lcov --remove hw1.info "/usr/include/*" "./include/*" "/usr/local/*" > coverage.info && genhtml -o report coverage.info
 
       - name: Valgrind install
-        run: sudo apt-get update && sudo apt-get install -y valgrind && mkdir valgrind_tests  
+        run: sudo apt-get update && sudo apt-get install -y valgrind 
 
       - name: Valgrind 
-        run: cd valgrind_tests && cmake .. && make && valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all -s -q ./run_tests &&  cmake -Dparallel=ON .. && make &&  valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all -s -q ./run_tests && valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all -s -q ./parallel_test && valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all -s -q ./consistent_test && valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all -s -q ./comparison
+        run: mkdir valgrind_tests && cd valgrind_tests && cmake .. && make && valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all -s -q ./run_tests &&  cmake -Dparallel=ON .. && make &&  valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all -s -q ./run_tests
 
       - name: Sanitizers address
         run: cd build && cmake -Daddress=ON -Dparallel=OFF .. && make  && cmake -Daddress=ON -Dparallel=ON .. && make  
