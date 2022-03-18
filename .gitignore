@@ -3,6 +3,7 @@ CMakeFiles/
 Testing/
 cmake-build-debug/
 code_coverage/
+report/
 
 # Prerequisites
 *.d
@@ -17,8 +18,9 @@ code_coverage/
 *.ilk
 *.map
 *.exp
-
+*.info
 *.gcno
+!.git/workflows/ci.yml
 
 # Precompiled Headers
 *.gch
