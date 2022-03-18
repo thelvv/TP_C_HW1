@@ -20,7 +20,7 @@ report/
 *.exp
 *.info
 *.gcno
-!.git/workflows/ci.yml
+
 
 # Precompiled Headers
 *.gch
