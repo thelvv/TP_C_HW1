@@ -1,31 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/array_tools.h"
+#include <stdbool.h>
+
+#include "array_tools.h"
 
 
 #define INITIAL_ARR_SIZE 0
 #define INITIAL_ARR_CAPACITY 1
 #define ARR_CAPACITY_COEFF 2
-#define PRINT_ALL_SONGS 1
-#define PRINT_SPEC_SONGS 2
+
+#define PRINT_ALL_SONGS 2
+#define PRINT_SPEC_SONGS 3
 
 #define CONTINUE_ANS 1
 #define STOP_ANS 0
 
 
-int push_song(Array *array, Song song) {
+bool push_song(Array *array, Song song) {
     if (array->size >= array->capacity) {
         array->song_array = change_capacity_of_array(array);
         if (!array->song_array) {
-            return 1;
+            return true;
         }
     }
     int current_size = array->size;
     array->song_array[current_size] = song;
     array->size++;
 
-    return 0;
+    return false;
 }
 
 Song *change_capacity_of_array(Array *array) {
@@ -47,22 +50,22 @@ Song *change_capacity_of_array(Array *array) {
     return new_song_array;
 }
 
-int allocate_memory(Array *array) {
+bool allocate_memory(Array *array) {
     if (array == NULL) {
-        return 1;
+        return true;
     }
 
     Song *new_song_array = calloc(1, sizeof(Song));
     if (!new_song_array) {
         free(new_song_array);
-        return 1;
+        return true;
     }
 
     array->song_array = new_song_array;
     array->capacity = INITIAL_ARR_CAPACITY;
     array->size = INITIAL_ARR_SIZE;
 
-    return 0;
+    return false;
 }
 
 

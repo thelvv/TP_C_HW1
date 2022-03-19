@@ -3,18 +3,18 @@
 
 #include "song_tools.h"
 
-typedef struct song_array {
+typedef struct {
     Song *song_array;
     int capacity;
     int size;
 } Array;
 
 
-int push_song(Array *array, Song song);
+bool push_song(Array *array, Song song);
 
 Song *change_capacity_of_array(Array *array);
 
-int allocate_memory(Array *array);
+bool allocate_memory(Array *array);
 
 int print_array(const Array *array, int flag);
 

@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <cstdio>
 
 extern "C" {
 #include "song_tools.h"
@@ -12,14 +11,14 @@ TEST(PrintSongTest, CorrectDataPrint) {
 }
 
 TEST(GetSongTest, NullPointerTest) {
-    int getting_result = get_song(nullptr);
+    bool getting_result = get_song(nullptr);
 
-    EXPECT_EQ(getting_result, 1);
+    EXPECT_EQ(getting_result, true);
 }
 
 
 TEST(GetDurationTest, NullPointerTest) {
-    int getting_result = get_duration(nullptr);
+    bool getting_result = get_duration(nullptr);
 
-    EXPECT_EQ(getting_result, 1);
+    EXPECT_EQ(getting_result, true);
 }

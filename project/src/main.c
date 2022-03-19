@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/song_tools.h"
-#include "../include/array_tools.h"
+
+#include "song_tools.h"
+#include "array_tools.h"
 
 /*
  Федоров А.А. Web-11
@@ -10,6 +11,13 @@
  ее авторе, исполнителе, названии и длительности.
  Составить с ее использованием программу вывода информации обо всех песнях, исполненных своим автором.
 */
+
+#define GET_NEW_SONG 1
+#define PRINT_ALL_SONGS 2
+#define PRINT_SPEC_SONGS 3
+
+
+
 
 int main() {
     Array array;
@@ -29,25 +37,25 @@ int main() {
         printf("\n");
 
         switch (answer) {
-            case 1:
+            case GET_NEW_SONG:
                 get_song(&new_song);
                 push_song(&array, new_song);
                 break;
-            case 2:
+            case PRINT_ALL_SONGS:
                 if (array.size == 0) {
                     printf("Error! Array is empty!\n");
                     break;
                 }
 
-                print_array(&array, 1);
+                print_array(&array, PRINT_ALL_SONGS);
                 break;
-            case 3:
+            case PRINT_SPEC_SONGS:
                 if (array.size == 0) {
                     printf("Error! Array is empty!\n");
                     break;
                 }
 
-                if (!print_array(&array, 2)) {
+                if (!print_array(&array, PRINT_SPEC_SONGS)) {
                     printf("Error! Required songs not found!\n");
                 }
                 break;

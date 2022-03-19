@@ -5,11 +5,11 @@ extern "C" {
 #include "song_tools.h"
 }
 
-#define SUCCESS_FLAG 0
+#define SUCCESS_FLAG false
 
 TEST(AllocateMemoryTest, AllocationTest) {
     Array test_array;
-    int allocation_result = allocate_memory(&test_array);
+    bool allocation_result = allocate_memory(&test_array);
 
     EXPECT_EQ(allocation_result, SUCCESS_FLAG);
     EXPECT_EQ(test_array.size, 0);
@@ -29,14 +29,14 @@ TEST(AllocateMemoryTest, AllocationTest) {
 
 TEST(PushSongTest, SingleData) {
     Array test_array;
-    int allocation_result = allocate_memory(&test_array);
+    bool allocation_result = allocate_memory(&test_array);
 
     EXPECT_EQ(allocation_result, SUCCESS_FLAG);
     EXPECT_EQ(test_array.capacity, 1);
     EXPECT_EQ(test_array.size, 0);
 
     Song test_song = {"Title", "Author", "Performer", {3, 55}};
-    int push_result = push_song(&test_array, test_song);
+    bool push_result = push_song(&test_array, test_song);
 
     EXPECT_EQ(push_result, SUCCESS_FLAG);
     EXPECT_STREQ(test_array.song_array[0].title, test_song.title);
@@ -51,14 +51,14 @@ TEST(PushSongTest, SingleData) {
 
 TEST(PushSongTest, DoubleData) {
     Array test_array;
-    int allocation_result = allocate_memory(&test_array);
+    bool allocation_result = allocate_memory(&test_array);
 
     EXPECT_EQ(allocation_result, SUCCESS_FLAG);
     EXPECT_EQ(test_array.capacity, 1);
     EXPECT_EQ(test_array.size, 0);
 
     Song test_song_1 = {"Title_1", "Author_1", "Performer_1", {1, 11}};
-    int push_result = push_song(&test_array, test_song_1);
+    bool push_result = push_song(&test_array, test_song_1);
 
     EXPECT_EQ(push_result, SUCCESS_FLAG);
     EXPECT_STREQ(test_array.song_array[0].title, test_song_1.title);
@@ -81,14 +81,14 @@ TEST(PushSongTest, DoubleData) {
 }
 
 TEST(PushSongTest, NullPointerTest) {
-    int allocation_result = allocate_memory(nullptr);
+    bool allocation_result = allocate_memory(nullptr);
 
     EXPECT_EQ(allocation_result, 1);
 }
 
 TEST(ChangingSizeOfArrayTest, SingleChange) {
     Array test_array;
-    int allocation_result = allocate_memory(&test_array);
+    bool allocation_result = allocate_memory(&test_array);
     EXPECT_EQ(allocation_result, SUCCESS_FLAG);
 
     test_array.song_array = change_capacity_of_array(&test_array);
@@ -100,7 +100,7 @@ TEST(ChangingSizeOfArrayTest, SingleChange) {
 
 TEST(ChangingSizeOfArrayTest, DoubleChange) {
     Array test_array;
-    int allocation_result = allocate_memory(&test_array);
+    bool allocation_result = allocate_memory(&test_array);
     EXPECT_EQ(allocation_result, SUCCESS_FLAG);
 
     test_array.song_array = change_capacity_of_array(&test_array);
@@ -114,17 +114,17 @@ TEST(ChangingSizeOfArrayTest, DoubleChange) {
 
 TEST(PrintArrayTest, CorrectDataPrint) {
     Array test_array;
-    int allocation_result = allocate_memory(&test_array);
+    bool allocation_result = allocate_memory(&test_array);
 
     EXPECT_EQ(allocation_result, SUCCESS_FLAG);
     EXPECT_EQ(test_array.capacity, 1);
     EXPECT_EQ(test_array.size, 0);
 
     Song test_song = {"Title", "Author", "Performer", {2, 55}};
-    int push_result = push_song(&test_array, test_song);
+    bool push_result = push_song(&test_array, test_song);
     EXPECT_EQ(push_result, SUCCESS_FLAG);
 
-    int printing_result = print_array(&test_array, 1);
+    int printing_result = print_array(&test_array, 2);
     EXPECT_EQ(printing_result, 65);
 
     free(test_array.song_array);
