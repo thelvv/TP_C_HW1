@@ -1,24 +1,37 @@
 #ifndef PROJECT_INCLUDE_ARRAY_TOOLS_H_
 #define PROJECT_INCLUDE_ARRAY_TOOLS_H_
 
-#include "song_tools.h"
+#include <stdbool.h>
+
+/*
+typedef struct {
+    char* initial_string;
+    int length_of_string;
+};
+*/
+typedef struct {
+    int count;
+    int length;
+    char symbol;
+} Sequence;
 
 typedef struct {
-    Song *song_array;
-    int capacity;
     int size;
-} Array;
+    int capacity;
+    Sequence *data;
+} Array_of_sequences;
 
+char *get_initial_string(int length);
 
-bool push_song(Array *array, Song song);
+int get_length_of_string();
 
-Song *change_capacity_of_array(Array *array);
+bool push_to_array(Array_of_sequences *array, Sequence seq);
 
-bool allocate_memory(Array *array);
+Sequence *change_capacity_of_array(Array_of_sequences *array);
 
-int print_array(const Array *array, int flag);
+bool allocate_memory(Array_of_sequences *array);
 
-int next_step();
+int print_array(const Array_of_sequences *array);
 
 
 #endif  // PROJECT_INCLUDE_ARRAY_TOOLS_H_

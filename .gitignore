@@ -4,9 +4,12 @@ Testing/
 cmake-build-debug/
 code_coverage/
 report/
+build/
 
 # Prerequisites
 *.d
+
+*.swp
 
 # Object files
 *.o
