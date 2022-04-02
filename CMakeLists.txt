@@ -4,13 +4,13 @@ project(HW2 C CXX)
 option(parallel "build" OFF)
 
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 set(GCC_COVERAGE_COMPILE_FLAGS "-pthread ")
 set(CMAKE_C_CLANG_TIDY clang-tidy; -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus*)
 
-set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Werror -fPIC")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} -Wall -Wpedantic -Werror --coverage ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -Wall -Wpedantic -Werror  --coverage ")
 set(INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/project/include")
 
 if(address)
@@ -38,10 +38,10 @@ add_executable(HW2 project/src/main.c)
 
 if(parallel)
     message("parallel")
-    target_link_libraries(HW2 parallel gcov)
+    target_link_libraries(HW2 parallel)
 else()
     message("consistent")
-    target_link_libraries(HW2 consistent gcov)
+    target_link_libraries(HW2 consistent)
 endif(parallel)
 
 find_package(GTest REQUIRED)

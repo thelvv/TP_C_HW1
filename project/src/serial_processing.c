@@ -42,7 +42,7 @@ bool find_sequences(int length) {
         previous_sym = sym;
     }
 
-    print_array(&array);
+    // print_array(&array);
     print_spec_seq(&array);
 
     free(array.data);
