@@ -9,7 +9,7 @@ extern "C" {
 TEST(FindSequencesTest, InCorrectInput) {
     int result = find_sequences(0);
 
-    EXPECT_EQ(result, 0);
+    EXPECT_EQ(result, 1);
 }
 
 TEST(FindSequencesTest, CorrectInput) {
