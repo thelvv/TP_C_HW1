@@ -1,8 +1,9 @@
-#include <stdio.h>
 #include <stdlib.h>
 
 #include "array_tools.h"
 #include "serial_processing.h"
+#include "parallel_processing.h"
+
 
 
 /*
@@ -24,17 +25,7 @@ int main() {
         return 1;
     }
 
-    find_sequences(&array, length_of_string);
-
-
-/*
-    FILE *file = fopen(FILENAME, "w+");
-    fprintf(file, "123456661111");
-    fclose(file);
-*/
-
-    free(array.data);
-
+    find_sequences(length_of_string);
 
     return 0;
 }

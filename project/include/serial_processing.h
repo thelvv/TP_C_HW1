@@ -1,18 +1,15 @@
-#ifndef PROJECT_INCLUDE_SERIAL_PROCESSING_H
-#define PROJECT_INCLUDE_SERIAL_PROCESSING_H
+#ifndef PROJECT_INCLUDE_SERIAL_PROCESSING_H_
+#define PROJECT_INCLUDE_SERIAL_PROCESSING_H_
 
 #define FILENAME "../input.txt"
 
+#include <stdbool.h>
 
-int find_sequences(Array_of_sequences *array, int length);
+#include "array_tools.h"
 
-int get_num_of_record(const Array_of_sequences *array, char ch, int count);
+bool find_sequences(int length);
 
-int char_processing(Array_of_sequences *array, char ch, int count);
-
-Sequence *get_most_frequent_seq(const Array_of_sequences *array);
-
-void print_spec_seq(const Array_of_sequences *array);
+int print_spec_seq(const Array_of_sequences *array);
 
 
-#endif  // PROJECT_INCLUDE_SERIAL_PROCESSING_H
+#endif  // PROJECT_INCLUDE_SERIAL_PROCESSING_H_
